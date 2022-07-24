@@ -1,10 +1,56 @@
 ###############################PROBLEM############################################################################################# 
 #https://www.hackerearth.com/practice/data-structures/advanced-data-structures/fenwick-binary-indexed-trees/tutorial/
-from ss_pillai import *
-
 ARR_MAX_VAL = 5*10**5
 ARR_MAX_VAL = 13
 PILLAI= [0] * (ARR_MAX_VAL+1)
+
+
+
+def phi(x):	
+	p=2
+	res = x
+	while (p*p <= x):
+
+		if x%p==0:
+
+			while x%p==0:
+				x=x//p
+
+			res = res* (1.0 - (1.0 / float(p)))
+
+		p+=1
+
+	if(x > 1):
+		res = res *(1.0 - (1.0 / float(x)))
+
+	# EULER_TOIENT[x]=int(res)
+	return int(res)
+
+def pillai(n):
+	# since divsors can exists within the range of sqrt of the number
+
+	res = 0
+
+	x=1
+
+	while x*x <= n:
+
+		if n % x ==0: # this is a divisor
+
+			d1 = x
+			d2 = n//x
+
+			# we can calcuate for the both of the side for this function
+
+			res +=d1*phi(n//d1)
+
+			if d1!=d2:
+				res +=d2*phi(n//d2)
+	
+
+		x+=1
+
+	return res		
 
 
 def update(bit_arr,  bit_arr_len,   val, index):
