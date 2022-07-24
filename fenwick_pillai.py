@@ -1,0 +1,3 @@
+ARR_MAX_VAL = 5*10**5
+
+print("ARR_MAX_VAL: ", ARR_MAX_VAL)
