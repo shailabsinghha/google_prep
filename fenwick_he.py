@@ -1,7 +1,10 @@
 ###############################PROBLEM############################################################################################# 
 #https://www.hackerearth.com/practice/data-structures/advanced-data-structures/fenwick-binary-indexed-trees/tutorial/
+import sys
+sys.stdin = open("fenwick_tc.txt", "r")
+
 ARR_MAX_VAL = 5*10**5
-ARR_MAX_VAL = 13
+MOD_VAL = 10**9+7
 PILLAI= [0] * (ARR_MAX_VAL+1)
 
 
@@ -57,7 +60,7 @@ def update(bit_arr,  bit_arr_len,   val, index):
 
 	i = index
 	while i< bit_arr_len:
-		bit_arr[i]+=val
+		bit_arr[i]= (bit_arr[i] + val)%MOD_VAL
 		i+=i&(-i)
 
 def query(bit_arr, bit_arr_len,  index):
@@ -72,6 +75,7 @@ def query(bit_arr, bit_arr_len,  index):
 
 ################################ PPILLAI INIT HERE ###############################
 for x in range(1, ARR_MAX_VAL+1):
+	print("processing data: ", x)
 	PILLAI[x]=pillai(x)
 ################################ PILLAI CLOSED HERE ###############################
 
